@@ -16,7 +16,7 @@ NORMALIZED_PRECISION = 7
 
 @dataclass(frozen=True)
 class GenerateSettings:
-    source_pose: str
+    pass
 
 
 @dataclass
@@ -69,7 +69,6 @@ class AnatomyDriverPlan:
 @dataclass(frozen=True)
 class RigPlan:
     schema_version: int
-    source_pose: str
     bones: tuple[BonePlan, ...]
     anatomy_drivers: tuple[AnatomyDriverPlan, ...]
 
@@ -78,7 +77,6 @@ class RigPlan:
             "anatomy_drivers": [driver.to_dict() for driver in self.anatomy_drivers],
             "bones": [bone.to_dict() for bone in self.bones],
             "schema_version": self.schema_version,
-            "source_pose": self.source_pose,
         }
 
     def to_json(self) -> str:
@@ -130,14 +128,6 @@ def _validate(request: GenerateRequest) -> tuple[ValidationIssue, ...]:
                 request.target_name,
             )
         )
-    if request.settings.source_pose not in {"T", "A"}:
-        errors.append(
-            ValidationIssue(
-                "invalid_source_pose",
-                "Source pose must be explicitly set to T or A.",
-                "source_pose",
-            )
-        )
     for role in REQUIRED_LANDMARKS:
         value = request.landmarks.get(role)
         if value is None:
@@ -171,7 +161,6 @@ def _build_plan(request: GenerateRequest) -> RigPlan:
     )
     return RigPlan(
         schema_version=1,
-        source_pose=request.settings.source_pose,
         bones=(
             BonePlan("upper_arm.L", "DEF-upper_arm.L", None, shoulder, elbow),
             BonePlan("forearm.L", "DEF-forearm.L", "upper_arm.L", elbow, palm),

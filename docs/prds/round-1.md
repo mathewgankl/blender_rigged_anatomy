@@ -1,6 +1,6 @@
 # Round 1 Anatomical Rig PRD
 
-**Status:** APPROVED - MILESTONE 1 AMENDMENT AUTHORIZED
+**Status:** APPROVED - MILESTONE 2 AUTHORIZED
 **Target:** Blender 5.2 LTS on Windows
 **Runtime:** Blender's embedded Python
 **Updated:** 2026-09-14
@@ -8,7 +8,8 @@
 This document is the authoritative Round 1 product requirement produced from the
 completed planning interview and approved by the user on 2026-09-14. It supersedes
 `docs/round-1-pre-grill-notes.md` for Round 1 requirements. Approval establishes the
-five gated milestones below; only Milestone 1 is currently authorized. It does not
+five gated milestones below; Milestone 1 is approved and only Milestone 2 is
+currently authorized. It does not
 authorize later-round muscle, fat, skin-wrapping, or physics work.
 
 ## Outcome
@@ -696,10 +697,9 @@ Milestone 1 removal of categorical pose input.
 
 The user approved this PRD and authorized Milestone 1 on 2026-09-14. On the same
 date, the user approved the continuous source-rest amendment recorded in
-`docs/decisions/source-rest-pose-contract.md`. Milestone 1 remains authorized, but
-its evidence must be refreshed against the amended contract. Milestone 2 and later
-work remain unauthorized until each preceding milestone's evidence is approved. The
-numeric pose oracle above requires its own approval before Milestone 3. Any other
-change to public behavior, persistent data, licensing, compatibility, milestone
-scope, or a fallback named in the risks above requires a new decision before
-implementation.
+`docs/decisions/source-rest-pose-contract.md`, then approved the refreshed Milestone
+1 evidence and authorized Milestone 2. Milestone 3 and later work remain
+unauthorized until each preceding milestone's evidence is approved. The numeric pose
+oracle above requires its own approval before Milestone 3. Any other change to
+public behavior, persistent data, licensing, compatibility, milestone scope, or a
+fallback named in the risks above requires a new decision before implementation.

@@ -1,43 +1,46 @@
 # Milestone 1 Verification
 
-**Status:** REQUIRES REFRESH - SOURCE-REST CONTRACT AMENDED
+**Status:** APPROVED
 **Date:** 2026-09-14
 **Environment:** Windows, Blender 5.2.1 LTS, embedded Python 3.13.13
 **Scope:** Round 1, Milestone 1 only
 
 ## Result
 
-The recorded Harness and Vertical Slice checks passed for one unilateral left-arm
-chain under the former categorical T/A input contract. The approved continuous
-source-rest amendment invalidates that part of the evidence. No Milestone 2 asset
-conversion, full fitting, or later rig behavior has started.
+The Harness and Vertical Slice checks pass for one unilateral left-arm chain under
+the approved continuous source-rest contract. Generation requires no T/A category,
+the canonical plan stores no categorical `source_pose`, and the Blender operator
+exposes no pose selector. No Milestone 2 asset conversion, full fitting, or later
+rig behavior has started.
 
-## Amendment Impact
+## Amendment Result
 
 On 2026-09-14, the user approved
-`docs/decisions/source-rest-pose-contract.md`. Milestone 1 must remove the T/A
-selector and categorical `source_pose` field, preserve the actual supported source
-rest pose, and produce the same deterministic plan without requiring a category.
-The lifecycle, materialization, and idempotence evidence remains useful, but this
-record cannot support Milestone 1 approval until the implementation and tests are
-refreshed and the complete gate passes again.
+`docs/decisions/source-rest-pose-contract.md`. The refreshed application contract,
+plan, operator, and fixtures no longer require or store a T/A category. Actual
+source-rest transforms and canonical T mapping remain Milestone 2 and Milestone 3
+work under their approved ordering and gates.
 
 ## Red-Green Evidence
 
-The first headless run failed at the intended missing production boundary:
+The source-rest regression first failed at the intended obsolete application
+boundary:
 
 ```text
-ModuleNotFoundError: No module named 'rigged_anatomy'
+TypeError: GenerateSettings.__init__() missing 1 required positional argument: 'source_pose'
 ```
 
-After the minimal implementation, the focused suite passed. A tightened
-materialization check then failed because only the armature existed; adding the
-three synthetic anatomy islands made that check pass. An operator/headless
-equivalence check also exposed Blender float32 coordinate storage. Canonical
-normalized coordinates are now quantized to seven decimal places, safely inside
-the approved `1e-4 H` tolerance, and both paths produce identical JSON.
+After removing the categorical field, validation branch, plan value, and operator
+enum, the focused `test_generation_requires_no_source_pose_category` check passed.
+The operator/headless test now invokes the operator without arguments and verifies
+that its RNA properties contain no `source_pose` selector.
 
-## Pre-Amendment Evidence
+The original vertical-slice red-green work remains represented by the materialized
+two-bone armature and three synthetic anatomy islands. Canonical normalized
+coordinates remain quantized to seven decimal places, safely inside the approved
+`1e-4 H` tolerance, and the operator and direct paths produce identical JSON.
+
+## Current Evidence
 
 | Criterion | Evidence |
 |---|---|
@@ -48,7 +51,7 @@ the approved `1e-4 H` tolerance, and both paths produce identical JSON.
 | Materialization | A staged `RA_Generated` collection receives a two-bone deform armature and closed synthetic humerus, radius, and ulna meshes with role/driver metadata. |
 | Idempotence | Running the same plan twice leaves one collection, one armature, two bones, and one mesh per anatomy role. |
 | Deterministic fixture | The checked-in synthetic target and left shoulder/palm fixture drive all vertical-slice checks without external packages or private assets. |
-| Amended source-rest contract | Not yet met. The current operator and rig plan still require and store `T` or `A`. |
+| Amended source-rest contract | Direct and operator generation require no T/A input; the plan and operator RNA contain no `source_pose` field. |
 
 ## Final Command
 
@@ -56,9 +59,9 @@ the approved `1e-4 H` tolerance, and both paths produce identical JSON.
 & "tests\run_milestone1.ps1"
 ```
 
-Pre-amendment observed result:
+Observed result on 2026-09-14:
 
-- Six Blender-headless tests pass.
+- Seven Blender-headless tests pass.
 - Source manifest validation passes.
 - Extension ZIP build and ZIP validation pass.
 - `EXTENSION_LIFECYCLE_OK` is printed.
@@ -81,10 +84,7 @@ Pre-amendment observed result:
 
 ## Remaining Scope
 
-Before this milestone can return to the approval gate, refresh the input schema,
-operator, deterministic fixture, and structured validation tests for the continuous
-source-rest contract and rerun this command.
-
-The full ten-landmark contract, pinned anatomy assets, complete catalogs, fitting,
-containment, morphology, and scale matrix belong to Milestone 2. Milestone 2 remains
-unauthorized pending explicit approval of this evidence.
+The user approved this evidence and authorized Milestone 2 on 2026-09-14. The full
+ten-landmark contract, source-rest validation thresholds, pinned anatomy assets,
+role registry, complete catalogs, fitting, containment, morphology, and scale matrix
+belong to Milestone 2.

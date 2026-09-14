@@ -1,7 +1,7 @@
 # Project Jumpstart
 
-**Status:** MILESTONE 1 SOURCE-REST AMENDMENT AUTHORIZED - NOT IMPLEMENTED
-**Phase:** Round 1 Milestone 1 evidence refresh
+**Status:** MILESTONE 2 AUTHORIZED - ROLE REGISTRY NOT IMPLEMENTED
+**Phase:** Round 1 Milestone 2 canonical data foundations
 **Updated:** 2026-09-14
 
 ## Read
@@ -27,7 +27,6 @@ normal continuation read.
   in `docs/decisions/round-1-planning-interview.md`; read it only when rationale is
   material to a current decision.
 - The user approved the PRD and explicitly authorized Milestone 1 on 2026-09-14.
-  Every later milestone has its own approval gate and remains unauthorized.
 - The user approved the continuous source-rest amendment on 2026-09-14. It removes
   the T/A selector while retaining a supported neutral rest-pose boundary and a
   computed canonical T mapping. The decision is recorded in
@@ -36,6 +35,8 @@ normal continuation read.
   manifests into Milestone 2 so its catalogs have stable role references. Milestone
   3 retains rig behavior materialization. See
   `docs/decisions/role-registry-milestone-order.md`.
+- The user approved the refreshed Milestone 1 evidence and explicitly authorized
+  Milestone 2 on 2026-09-14. Milestone 3 and later remain unauthorized.
 - The versioned numeric pose oracle remains a separate decision required before
   Milestone 3; it does not block PRD review or Milestones 1-2.
 
@@ -54,10 +55,11 @@ normal continuation read.
   serializable rig plan, shared application command, Blender operator, and staged
   left-arm materializer. The vertical slice creates two deform bones and synthetic
   humerus/radius/ulna proof meshes; pinned anatomy assets remain Milestone 2 work.
-- `tests/run_milestone1.ps1` passes six Blender-headless behavior tests, validates
+- `tests/run_milestone1.ps1` passes seven Blender-headless behavior tests, validates
   and builds the Extension ZIP, and passes isolated install/enable/disable/uninstall
-  lifecycle checks under Blender 5.2.1 LTS. Those results predate the source-rest
-  amendment and must be refreshed. Detailed status is in
+  lifecycle checks under Blender 5.2.1 LTS. The refreshed tests prove direct and
+  operator generation need no T/A category and that neither the canonical plan nor
+  operator RNA contains `source_pose`. Detailed status is in
   `docs/verification/milestone-1.md`.
 - Git tracks `origin/main` at
   `https://github.com/mathewgankl/blender_rigged_anatomy.git`.
@@ -88,11 +90,9 @@ normal continuation read.
 
 ## Blockers And Risks
 
-- The Milestone 1 source and tests still require and store categorical `source_pose`
-  input. They do not satisfy the amended PRD until refreshed.
 - Numeric supported-source-rest rejection thresholds require a proposal and user
-  approval before Milestone 2 validation implementation. They do not block the
-  Milestone 1 schema refresh.
+  approval before Milestone 2 validation implementation. They do not block
+  the role-registry increment.
 - Milestone 3 is additionally blocked until targeted anatomy evidence supports a
   numeric `tests/fixtures/pose-suite-v1.json` proposal and the user approves it.
 - Geometry Nodes signed clearance, full source conversion, Automatic Weights on
@@ -101,7 +101,7 @@ normal continuation read.
 
 ## Next Action
 
-Add the smallest failing headless test proving that generation needs no T/A input.
-Then remove only the categorical application field, plan field, and operator
-selector; run the focused test and full Milestone 1 gate, update its evidence, and
-stop for approval. Do not begin Milestone 2.
+Add the smallest failing test for a versioned data-only canonical role registry with
+an exact closed role set and required metadata. Implement that registry without
+materializing Milestone 3 rig behavior, run the focused and affected regression
+checks, update evidence, and stop before the mapping-manifest increment.

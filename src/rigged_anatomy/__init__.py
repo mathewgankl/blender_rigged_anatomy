@@ -14,11 +14,6 @@ class RIGGED_ANATOMY_OT_generate_vertical_slice(bpy.types.Operator):
     bl_description = "Generate the current anatomical rig plan"
     bl_options = {"REGISTER", "UNDO"}
 
-    source_pose: bpy.props.EnumProperty(
-        name="Source Pose",
-        items=(("T", "T-Pose", ""), ("A", "A-Pose", "")),
-    )
-
     def execute(self, context):
         target = context.active_object
         target_name = target.name if target is not None else ""
@@ -34,7 +29,7 @@ class RIGGED_ANATOMY_OT_generate_vertical_slice(bpy.types.Operator):
             target_name=target_name,
             target_height=target_height,
             landmarks=landmarks,
-            settings=GenerateSettings(source_pose=self.source_pose),
+            settings=GenerateSettings(),
         )
         result = run_generate(request, BlenderMaterializer())
         context.scene["ra_last_result"] = result.to_json()

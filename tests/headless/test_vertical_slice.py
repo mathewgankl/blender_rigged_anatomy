@@ -26,7 +26,7 @@ def valid_request():
             "shoulder.L": (0.6, 0.0, 0.8),
             "palm.L": (0.9, 0.0, 0.2),
         },
-        settings=GenerateSettings(source_pose="T"),
+        settings=GenerateSettings(),
     )
 
 
@@ -80,6 +80,14 @@ class VerticalSliceTests(unittest.TestCase):
             [driver["role"] for driver in payload["plan"]["anatomy_drivers"]],
             ["humerus.L", "radius.L", "ulna.L"],
         )
+
+    def test_generation_requires_no_source_pose_category(self):
+        request = valid_request()
+
+        result = run_generate(request)
+
+        self.assertTrue(result.ok, result.to_json())
+        self.assertNotIn("source_pose", result.plan.to_dict())
 
     def test_plan_is_normalized_across_uniform_scale(self):
         baseline = run_generate(valid_request())
@@ -178,11 +186,13 @@ class VerticalSliceTests(unittest.TestCase):
         bpy.context.view_layer.objects.active = target
         target.select_set(True)
         rigged_anatomy.register()
+        operator_type = bpy.types.RIGGED_ANATOMY_OT_generate_vertical_slice
 
         expected = run_generate(valid_request()).to_json()
-        operator_result = bpy.ops.rigged_anatomy.generate_vertical_slice(source_pose="T")
+        operator_result = bpy.ops.rigged_anatomy.generate_vertical_slice()
 
         self.assertEqual(operator_result, {"FINISHED"})
+        self.assertNotIn("source_pose", operator_type.bl_rna.properties)
         self.assertEqual(bpy.context.scene["ra_last_result"], expected)
 
 

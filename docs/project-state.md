@@ -1,12 +1,12 @@
 # Project State
 
-**Status:** MILESTONE 1 EVIDENCE REQUIRES SOURCE-REST REFRESH
+**Status:** MILESTONE 2 AUTHORIZED - ROLE REGISTRY NOT IMPLEMENTED
 **Round:** 1
 **Updated:** 2026-09-14
 
 ## Current Result
 
-Milestone 1 now has a dependency-free Blender Extension skeleton and one left-arm
+Milestone 1 has a dependency-free Blender Extension skeleton and one left-arm
 vertical slice. A shared application command validates inputs, produces canonical
 JSON and a plan digest, and optionally materializes a staged Blender collection.
 The UI operator uses the same command as headless callers.
@@ -16,10 +16,10 @@ synthetic mesh islands for `humerus.L`, `radius.L`, and `ulna.L`. These meshes p
 the anatomy/armature materialization seam only; they are not the pinned anatomical
 assets authorized for Milestone 2.
 
-The user approved the continuous source-rest contract in
-`docs/decisions/source-rest-pose-contract.md`. The tool must no longer ask for a
-T/A category. The existing Milestone 1 implementation and tests still contain that
-selector, so their prior passing result is not current approval evidence.
+The source-rest amendment is implemented at the Milestone 1 boundary. Application
+settings require no T/A category, the canonical rig plan stores no categorical
+`source_pose`, and the Blender operator exposes no pose selector. The user approved
+the refreshed Milestone 1 evidence and authorized Milestone 2 on 2026-09-14.
 
 ## Evidence
 
@@ -29,20 +29,18 @@ See `docs/verification/milestone-1.md`. The complete local gate is:
 & "tests\run_milestone1.ps1"
 ```
 
-It passes six headless behavior tests against the pre-amendment contract, validates
-and builds the Extension ZIP in a temporary directory, validates the ZIP, and
-verifies isolated install, enable, disable, re-enable, and uninstall behavior under
-Blender 5.2.1 LTS. The input-contract checks and evidence must be refreshed.
+It passes seven headless behavior tests against the amended contract, validates and
+builds the Extension ZIP in a temporary directory, validates the ZIP, and verifies
+isolated install, enable, disable, re-enable, and uninstall behavior under Blender
+5.2.1 LTS.
 
 ## Risks And Boundaries
 
-- `src/rigged_anatomy/` still requires categorical `source_pose` input. That field,
-  its UI selector, and its plan representation conflict with the amended PRD.
 - Only `shoulder.L` and `palm.L` are accepted by this vertical slice. The complete
   ten-landmark contract and fitting behavior remain Milestone 2 work.
 - Numeric supported-source-rest rejection thresholds require approval before
-  Milestone 2 validation is implemented; they do not block the Milestone 1 schema
-  refresh.
+  Milestone 2 validation is implemented; they do not block the role-registry
+  increment.
 - The data-only canonical role registry and mapping manifests now belong to
   Milestone 2 because its catalogs depend on them. Rig behavior remains Milestone 3
   scope.
@@ -54,7 +52,7 @@ Blender 5.2.1 LTS. The input-contract checks and evidence must be refreshed.
 
 ## Next Action
 
-Add the smallest failing headless test proving that generation needs no T/A input.
-Then remove only the categorical application field, plan field, and operator
-selector; run the focused test and full Milestone 1 gate, update its evidence, and
-stop for approval. Do not begin Milestone 2.
+Add the smallest failing test for a versioned data-only canonical role registry with
+an exact closed role set and required metadata. Implement that registry without
+materializing Milestone 3 rig behavior, run the focused and affected regression
+checks, update evidence, and stop before the mapping-manifest increment.
