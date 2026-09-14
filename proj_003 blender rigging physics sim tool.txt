@@ -1,3 +1,8 @@
+STATUS: SUPERSEDED AS EXECUTION AUTHORITY
+REPLACED BY: docs/prds/round-1.md
+RETENTION: Original user-supplied planning input; read only for provenance or a
+named unresolved requirement.
+
 General instructions - put into relevant project system prompts in this folder:
 Only read documentation, do not do high-token usage activities like parse videos. Access video transcripts and taking screenshots ok, but only if determined to be of high value.
 
@@ -21,7 +26,9 @@ Skeleton autosizing needs to be implemented in this round. Implement and test se
 
 Ensure rig works at differnt scales and with resizing. 
 
-Use "body" object in roxanne_5 blender file for testing. Animate character pose from t-pose to what is seen in reference image __roxanne_isekai_meikyuu_de_harem_wo_drawn_by_hyouju_issei__970b2d14df3fa8df1e2ef8bfa855f9ed.jpg.
+Use `Body_lowpoly` in `roxanne_5.blend` for testing. Animate the character from
+the T-pose to the pose in
+`__roxanne_isekai_meikyuu_de_harem_wo_drawn_by_hyouju_issei__970b2d14df3fa8df1e2ef8bfa855f9ed.jpg`.
 
 Complete this round before exploring muscle-related deformations, focus only on how bones move with attached muscles groups causing related movement.
 

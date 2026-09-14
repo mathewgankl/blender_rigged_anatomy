@@ -1,17 +1,19 @@
 # Generic Engineering Execution Protocol
 
-**Status:** ACTIVE  
-**Purpose:** Reusable staged engineering, research, testing, and agent-routing policy  
-**Applies to:** New project execution prompts and protocol reviews  
-**Last verified:** 2026-09-04  
-**Supersedes:** NONE  
-**Superseded by:** NONE  
+**Status:** ACTIVE
+**Purpose:** Reusable staged engineering, research, testing, and agent-routing policy
+**Applies to:** All engineering project sessions before project-specific prompts
+**Last verified:** 2026-09-14
+**Supersedes:** NONE
+**Superseded by:** NONE
 **Primary evidence:** `read_first.md`
 
 Read `read_first.md` first and obey its authority, repository, Git/remote, CI,
 secrets, dependency, documentation, handoff, deprecation, archival, and removal
 policies. Use the active brief for planning, approved PRDs for execution, and the
-project protocol over this generic fallback.
+project protocol for project-specific behavior. A project prompt overrides this
+baseline only through a scoped user-approved conflict recorded under `Overrides` as
+required by `read_first.md`.
 
 If no current milestone is explicit, execute only **Milestone 0**. Do not start
 production implementation until Milestone 0 is reviewed or its acceptance
@@ -24,8 +26,10 @@ criteria explicitly authorize continuation. Stop after the authorized milestone.
 2. Label verified facts, assumptions, decisions, hypotheses, and open questions.
 3. Prefer the smallest correct, verifiable change; avoid speculative abstractions,
    options, compatibility layers, and fallbacks.
-4. Work in independently verifiable vertical increments with observable behavior,
-   tests, and concise documentation. Execute only the current milestone.
+4. Treat a milestone as an approval gate, not one implementation batch. Execute it
+   through the smallest independently verifiable vertical increments. Each increment
+   proves one observable behavior with the cheapest decisive test and adds no
+   unneeded future scaffolding. Execute only the current milestone.
 5. Preserve unrelated changes. Never revert, overwrite, delete unrecoverable user
    work, commit, push, publish, install system software, change system/remote/Git
    settings, expose secrets, or incur external cost without authorization.
@@ -68,12 +72,23 @@ suffices, survey literature/competitors without request, analyze multiple large
 references without need, research future milestones, or collect beyond adequate
 support. Optimize for the next verified decision, not exhaustive knowledge.
 
+Before delegating research, apply the research allocation preflight in Section 3.
+
 Expand only for an unexplained reproducible failure, conflicting primary
 evidence, a blocking undocumented API/format, required licensing/security/privacy/
 compatibility/destructive-change confirmation, a measured algorithm-specific
 bottleneck, or explicit user request. Reproduce and isolate failures and form a
 specific hypothesis first. Prefer a safe, cheap, deterministic, conclusive
 experiment over extended research.
+
+### Planning Interview And PRD Gate
+
+Milestone 0 must follow
+`prompts_transferable/planning-interview-and-prd-gate.md`. If no valid timing
+selection is recorded for the current planning scope, ask whether
+`matt-grill-with-docs` runs before external research or after a named bounded set.
+Apply that document's research and interview standards, and write no PRD until the
+interview is complete and the user separately authorizes drafting.
 
 ## 3. Models, Tools, And Agents
 
@@ -90,9 +105,64 @@ vendor names:
 | `DEEP_MODEL` | Architecture, numerical/concurrent/security work, destructive migration, persistent/public formats/APIs, and difficult root cause or high-risk review |
 | `MULTIMODAL_MODEL` | Necessary visual evidence such as screenshots, diagrams, or PDFs |
 
-If model routing is unavailable, constrain agent type, scope, thoroughness,
-context, permissions, tools, and output. An agent name does not prove cost; inspect
-configuration when cost matters.
+### Route-Fit Check
+
+At the start of substantial work, after a material scope or risk change, before a
+research batch, and after a failed or quota-limited route, compare the current
+primary model and reasoning effort with the workload and required error tolerance.
+Use only route details exposed by the current environment; do not pretend an effort
+setting is known when it is not.
+
+When the mismatch materially affects quality, cost, or context use, pause and brief
+the user. Recommend one route and explain the consequence concisely:
+
+- Upgrade model or effort for complex research, high-risk synthesis, difficult
+  numerical reasoning, conflicting evidence, or expensive error.
+- Downgrade model or effort for large routine retrieval or mechanical work when the
+  savings are meaningful and correctness remains easy to verify.
+- Continue directly when the current primary route fits the integrated task.
+- Assign a bounded subagent when separable work saves primary context or wall time.
+
+Ask the user to approve a material route change when they control model selection,
+effort, cost, or a required route. Do not interrupt for a negligible optimization or
+repeat the check when workload and routing have not changed.
+
+### Research Delegation Preflight
+
+Once before each research batch, perform one small allocation pass. Perform another
+only for a standalone dispatch not covered by that batch or when evidence, routing,
+or scope changes:
+
+1. List only questions that can change the current decision or milestone.
+2. Group questions that share sources, evidence, terminology, or a downstream
+   decision. Merge duplicates and give intersecting work to one agent or sequence it
+   through one shared evidence record.
+3. Separate dependent tracks from genuinely independent tracks. Never parallelize
+   research that must consume another track's findings.
+4. Choose direct research or the minimum useful number of bounded subagents. Assign
+   one coherent evidence bundle and one stop condition to each agent.
+5. Apply the route-fit check to the primary synthesis and every proposed agent. If
+   the evidence is complex or error-sensitive, recommend a stronger model or effort
+   before dispatch rather than compensating with duplicated cheap agents.
+6. Brief the user before starting the batch or dispatching agents with the grouped
+   tracks, direct-versus-agent allocation, exact model and effort where known,
+   expected synthesis point, and stop conditions. State when direct work is more
+   efficient than delegation.
+
+Keep this as an allocation summary, not a broad plan or hidden chain-of-thought.
+Replan only when evidence changes dependencies, a route fails, or scope changes.
+
+Before every subagent dispatch, inspect routing support and explicitly set the exact
+selectable model ID or configured alias and the exact supported reasoning-effort
+value. Include both in the assignment and resulting evidence; do not rely on
+defaults or infer either from the agent name. If the interface cannot set or verify
+them, state that limitation before dispatch and record the requested route as
+unverified. If the user or project named a required model or effort, obtain approval
+before using a fallback. Otherwise constrain agent type, scope, thoroughness,
+context, permissions, tools, and output. An agent name does not prove cost. Invoke
+configured subagents through the Task tool or direct `@` mention, never through
+`opencode run --agent`, which is a primary-agent command and may fall back to the
+default primary agent.
 
 Use direct tools for known file/symbol/string searches, one to three known files,
 known builds/tests/formatters/benchmarks, bounded status/diff review, one known URL,
@@ -191,7 +261,9 @@ Task/Purpose: <concrete result and current decision or milestone>
 Inputs: <exact paths, URLs, revisions, interfaces, and state>
 Questions: <short exact list>
 Scope: <in scope; out of scope>
-Model/Effort: <fast|balanced|deep|multimodal; low|medium|high>
+Model: <exact selectable model ID or configured alias>
+Effort: <exact supported reasoning-effort value>
+Routing verification: <how model and effort were set; or explicit limitation and approved fallback>
 Tools/Permissions: <read-only, web limits, write paths, commands>
 Evidence: <paths/symbols/lines/commands/tests/citations>
 Deliverable: <format and maximum size>
@@ -212,8 +284,9 @@ rather than creating empty future scaffolding.
 
 ### Milestone 0: Discovery And Planning
 Inspect requirements, workspace, toolchain, dependencies, tests, constraints,
-licenses, and material ambiguities. Define the smallest useful implementation
-milestone and objective acceptance criteria.
+licenses, and material ambiguities. Follow
+`prompts_transferable/planning-interview-and-prd-gate.md`, then define the smallest
+useful implementation milestone and objective acceptance criteria.
 
 ### Milestone 1: Harness And Minimal Vertical Slice
 Establish build/test workflow and the smallest end-to-end behavior proving the
@@ -241,6 +314,12 @@ and release automation.
 For each milestone define purpose; inputs/outputs/dependencies; explicit scope;
 objective criteria; required tests; applicable failure/rollback strategy;
 documentation; stop condition; and decisions required before the next milestone.
+Before execution, derive only the next increment in detail. Order increments by
+dependency and risk: resolve decisions and cheap uncertainty first, establish pure
+contracts before mutating adapters when practical, prove local behavior before
+external integration, and run expensive acceptance checks only after cheaper
+prerequisites. Ask the user when dependencies conflict, an increment has no decisive
+test, or the safest order changes approved scope or milestone ownership.
 
 ## 5. Implementation And Verification
 
@@ -253,6 +332,10 @@ For each increment:
 5. Run affected integration/regression tests.
 6. Review the diff for unintended changes.
 7. Record verified results and update project state before proceeding.
+
+Keep only one increment active. It must be small enough to reach a meaningful red or
+baseline result, a focused green result, and its stop condition without depending on
+unfinished sibling work.
 
 Before implementation and at major gates, confirm every material requirement maps
 to a milestone/test; ordering matches dependencies; no unresolved decision/API/

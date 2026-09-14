@@ -1,0 +1,20 @@
+schema_version = "1.0.0"
+
+id = "rigged_anatomy"
+version = "0.1.0"
+name = "Rigged Anatomy"
+tagline = "Generate anatomically informed humanoid rigs"
+maintainer = "mathewgankl"
+type = "add-on"
+
+tags = ["Rigging"]
+blender_version_min = "5.2.0"
+license = ["SPDX:GPL-3.0-or-later"]
+
+[permissions]
+
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "*.py[cod]",
+]

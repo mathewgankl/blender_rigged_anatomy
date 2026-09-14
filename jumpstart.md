@@ -1,45 +1,107 @@
 # Project Jumpstart
 
-**Status:** ACTIVE
-**Phase:** Milestone 0 - discovery and planning
-**Updated:** 2026-09-13
+**Status:** MILESTONE 1 SOURCE-REST AMENDMENT AUTHORIZED - NOT IMPLEMENTED
+**Phase:** Round 1 Milestone 1 evidence refresh
+**Updated:** 2026-09-14
 
 ## Read
 
 1. `read_first.md`
-2. `proj_003 blender rigging physics sim tool.txt`
-3. `prompts/rigged_anamtomy_execution_prompt.md`
-4. The approved Round 1 PRD when it exists
+2. `prompts_transferable/generic_engineering_execution_protocol.md`
+3. `prompts_transferable/milestone_continuation_prompt.md`
+4. `prompts_project/rigged_anamtomy_execution_prompt.md`
+5. `docs/prds/round-1.md`
+6. `docs/decisions/source-rest-pose-contract.md`
+7. `docs/project-state.md`
 
-Other prompts apply only to their stated setup or continuation scope.
+The source brief and pre-grill notes are superseded. Read them only for provenance
+or a named unresolved requirement. Read a research report only when an active
+question links it. `docs/agent-operations-log.md` is non-authoritative and is not a
+normal continuation read.
 
-## Project Instructions
+## Authority
 
-- Target Blender 5.2 LTS and Python 3.14 on Windows; use GitHub for CI/CD.
-- Complete Round 1 before muscle deformation or later-round physics work.
-- Round 1 covers a human-only anatomical IK rig, major visible muscle-group bone
-  relationships, scale-safe semi-automatic skeleton fitting, and non-realistic
-  humanoid proportions.
-- Use targeted written sources. Avoid videos unless a transcript or selected
-  frames uniquely answer a blocking question.
-- Research the top three compatible rigging standards, node-oriented workflows,
-  and the viability and licensing of MuJoCo Menagerie and MuSkeMo.
-- Use `roxanne_5.blend` and the supplied reference image for acceptance testing.
-- Prefer the smallest testable vertical slice; stop for approval before production
-  implementation.
+- `docs/prds/round-1.md` is the approved Round 1 execution authority.
+- The user completed `matt-grill-with-docs` and separately authorized PRD drafting
+  on 2026-09-14. Volunteered user reasoning and attribution boundaries are retained
+  in `docs/decisions/round-1-planning-interview.md`; read it only when rationale is
+  material to a current decision.
+- The user approved the PRD and explicitly authorized Milestone 1 on 2026-09-14.
+  Every later milestone has its own approval gate and remains unauthorized.
+- The user approved the continuous source-rest amendment on 2026-09-14. It removes
+  the T/A selector while retaining a supported neutral rest-pose boundary and a
+  computed canonical T mapping. The decision is recorded in
+  `docs/decisions/source-rest-pose-contract.md`.
+- The user approved moving the data-only canonical role registry and mapping
+  manifests into Milestone 2 so its catalogs have stable role references. Milestone
+  3 retains rig behavior materialization. See
+  `docs/decisions/role-registry-milestone-order.md`.
+- The versioned numeric pose oracle remains a separate decision required before
+  Milestone 3; it does not block PRD review or Milestones 1-2.
 
-## Current State
+## Verified State
 
-- Blender 5.2.1 LTS and Python 3.14.3 verified.
-- `roxanne_5.blend` opens headlessly.
-- Expected object `body` is absent; mesh objects are `Body_lowpoly` and `Cube`.
+- Blender 5.2.1 LTS is installed at
+  `C:/Program Files/Blender Foundation/Blender 5.2/blender.exe`; it embeds Python
+  3.13.13. The add-on targets Blender's embedded runtime only.
+- `roxanne_5.blend` opens headlessly. `Body_lowpoly` has identity transforms, no
+  armature or modifiers, 19,722 vertices, 19,720 quad faces, and no non-manifold or
+  loose edges. The scene uses metric units with scale length `1.0`. A fresh
+  Blender 5.2.1 headless handoff smoke test passed on 2026-09-14.
+- `roxanne_5.blend` and the supplied reference image are private local acceptance
+  fixtures unless redistribution rights are documented.
+- `src/rigged_anatomy/` contains the Blender Extension skeleton, canonical
+  serializable rig plan, shared application command, Blender operator, and staged
+  left-arm materializer. The vertical slice creates two deform bones and synthetic
+  humerus/radius/ulna proof meshes; pinned anatomy assets remain Milestone 2 work.
+- `tests/run_milestone1.ps1` passes six Blender-headless behavior tests, validates
+  and builds the Extension ZIP, and passes isolated install/enable/disable/uninstall
+  lifecycle checks under Blender 5.2.1 LTS. Those results predate the source-rest
+  amendment and must be refreshed. Detailed status is in
+  `docs/verification/milestone-1.md`.
 - Git tracks `origin/main` at
   `https://github.com/mathewgankl/blender_rigged_anatomy.git`.
-- No source, tests, approved PRD, build, or CI exists.
-- No project decisions are approved yet.
+- Round 1 research is complete under `docs/research/`: standards/MS-Human-700,
+  node workflow/MuSkeMo, Mantis, geometry density, skin clearance, and the
+  source-rest contract.
+- `opencode.json` configures the read-only `research` subagent as
+  `openai/gpt-5.6-terra` with `reasoningEffort: medium`. Apply the generic research
+  allocation and route-fit preflight before any new research batch.
+- Documentation whitespace checks pass; Git reports only LF-to-CRLF conversion
+  warnings.
+
+## Active Decisions
+
+- Round 1 delivers a Blender Extension containing a full fitted anatomical skeleton,
+  a smaller animator/deform rig, transactional Automatic Weights binding, and a
+  post-armature Geometry Nodes local bone-clearance corrector.
+- Muscle/fat generation, soft-tissue wrapping, body self-collision, and physics stay
+  in later rounds.
+- Independently written code is `GPL-3.0-or-later`; MS-Human-700-derived assets
+  retain Apache-2.0 terms and provenance.
+- The root `LICENSE` is aligned with `GPL-3.0-or-later`.
+- Input uses a supported neutral source rest pose, not a categorical T/A selection.
+  Arm elevation may vary continuously and independently; canonical T deltas are
+  computed from actual fitted rest transforms.
+- Public CI uses redistributable fixtures. Private `Body_lowpoly` and image-based
+  acceptance remain local release gates.
+
+## Blockers And Risks
+
+- The Milestone 1 source and tests still require and store categorical `source_pose`
+  input. They do not satisfy the amended PRD until refreshed.
+- Numeric supported-source-rest rejection thresholds require a proposal and user
+  approval before Milestone 2 validation implementation. They do not block the
+  Milestone 1 schema refresh.
+- Milestone 3 is additionally blocked until targeted anatomy evidence supports a
+  numeric `tests/fixtures/pose-suite-v1.json` proposal and the user approves it.
+- Geometry Nodes signed clearance, full source conversion, Automatic Weights on
+  `Body_lowpoly`, and the reclining pose remain implementation proof obligations
+  recorded in the PRD.
 
 ## Next Action
 
-Resolve whether `Body_lowpoly` is the intended test body, then define and obtain
-approval for the Round 1 architecture, milestones, exclusions, and acceptance
-tests.
+Add the smallest failing headless test proving that generation needs no T/A input.
+Then remove only the categorical application field, plan field, and operator
+selector; run the focused test and full Milestone 1 gate, update its evidence, and
+stop for approval. Do not begin Milestone 2.
