@@ -1,0 +1,102 @@
+{
+  "bundleVersion": "1",
+  "sources": [
+    {
+      "url": "https://github.com/mattpocock/skills",
+      "revision": "3cca18b368ae95cdbdebbff572ccafa662551015",
+      "license": "MIT"
+    },
+    {
+      "url": "https://github.com/cursor/plugins/tree/main/pstack",
+      "revision": "889ec4b68fa5aab0e867dad71ec3fdf386ae48f3",
+      "license": "MIT"
+    }
+  ],
+  "files": [
+    {
+      "source": "PSTACK_PRINCIPLES.md",
+      "target": ".opencode/PSTACK_PRINCIPLES.md",
+      "sha256": "8d372e9e83517d3d294ba4d93379cf336b0a14a6382c265bee40dd65ef677aa3"
+    },
+    {
+      "source": "THIRD_PARTY_NOTICES.md",
+      "target": ".opencode/THIRD_PARTY_NOTICES.md",
+      "sha256": "effc9f918dae93867d8a8dd40564610bf0bb447091f9a62f11b1b6373f9e076b"
+    },
+    {
+      "source": "skills/matt-grill-with-docs/SKILL.md",
+      "target": ".opencode/skills/matt-grill-with-docs/SKILL.md",
+      "sha256": "af2c0b15072b766bdda57535169e74958b8e0315bdc6ba8ba8eb27bd03e56abc"
+    },
+    {
+      "source": "skills/matt-grilling/SKILL.md",
+      "target": ".opencode/skills/matt-grilling/SKILL.md",
+      "sha256": "ca418f3f5a7e3b73436304074c84c79fadff69497b57de89049103f63109ea40"
+    },
+    {
+      "source": "skills/matt-grill-me/SKILL.md",
+      "target": ".opencode/skills/matt-grill-me/SKILL.md",
+      "sha256": "47a929295a0542a5f7a62e76796e0e228729601343c657bc9bfaae08a1ad55c3"
+    },
+    {
+      "source": "skills/matt-domain-modeling/SKILL.md",
+      "target": ".opencode/skills/matt-domain-modeling/SKILL.md",
+      "sha256": "aad1aceb0830edc71e9e17b194c2fa00ede12710f027520918212c6bc67d107d"
+    },
+    {
+      "source": "skills/matt-codebase-design/SKILL.md",
+      "target": ".opencode/skills/matt-codebase-design/SKILL.md",
+      "sha256": "8ffc88e916f3be71513a4b0cc8cab94f1b1d7e2cc3924593ba476a74e66c6ea2"
+    },
+    {
+      "source": "skills/matt-diagnosing-bugs/SKILL.md",
+      "target": ".opencode/skills/matt-diagnosing-bugs/SKILL.md",
+      "sha256": "7b2b249dafe93f7d12e4d0da0b5038d5e2a00778e67274c24bfbfd3273642b0e"
+    },
+    {
+      "source": "skills/matt-code-review/SKILL.md",
+      "target": ".opencode/skills/matt-code-review/SKILL.md",
+      "sha256": "1be4bd6ebeef626e72b457cfc06917e5971ceeb0b577e67803a75c50ad319b53"
+    },
+    {
+      "source": "skills/matt-prototype/SKILL.md",
+      "target": ".opencode/skills/matt-prototype/SKILL.md",
+      "sha256": "10f1c01848ce3d30e3f439ef5f9dd42a6ebc7ae4cc64c43cd00dc81b0efb7d9d"
+    },
+    {
+      "source": "skills/matt-writing-for-agents/SKILL.md",
+      "target": ".opencode/skills/matt-writing-for-agents/SKILL.md",
+      "sha256": "ea68672bcaba988d7e55bd33cd66599e40341986a41ddcacf85c0096b1cbd8bf"
+    },
+    {
+      "source": "skills/pstack-how/SKILL.md",
+      "target": ".opencode/skills/pstack-how/SKILL.md",
+      "sha256": "857f38f691fba0d738c3e2c8690120c17107cca262bb344514a010f8c71ab35e"
+    },
+    {
+      "source": "skills/pstack-blast-radius/SKILL.md",
+      "target": ".opencode/skills/pstack-blast-radius/SKILL.md",
+      "sha256": "548bfa0d4d51132406e126aada3e5396fef5062ffd1c102242ed9ec7a0350449"
+    },
+    {
+      "source": "skills/pstack-tdd/SKILL.md",
+      "target": ".opencode/skills/pstack-tdd/SKILL.md",
+      "sha256": "da64ecd125562b7bcdc9aac3f1a4e837488d026bd13fb96523beb090a13dcb9d"
+    },
+    {
+      "source": "skills/pstack-interrogate/SKILL.md",
+      "target": ".opencode/skills/pstack-interrogate/SKILL.md",
+      "sha256": "5dd94f1bcbc07c2a31ea359ec9689a10775a7bdb8a8a0153e4e849d0e09e2a82"
+    },
+    {
+      "source": "skills/pstack-technical-writing/SKILL.md",
+      "target": ".opencode/skills/pstack-technical-writing/SKILL.md",
+      "sha256": "ef03d4c99b7971f80c736a75c6dacbd1a42bd2535c20213146f53f8e297d4b86"
+    },
+    {
+      "source": "skills/pstack-unslop/SKILL.md",
+      "target": ".opencode/skills/pstack-unslop/SKILL.md",
+      "sha256": "e400d88b9a3109658f413c4efa4098eb445a5ed95b7ab7689ed5a95b7896dc9b"
+    }
+  ]
+}
