@@ -10,33 +10,16 @@ metadata:
 
 # Domain Modeling
 
-Treat `jumpstart.md` as the project's living domain glossary and
-`docs/decisions/` as the home for durable decision records. Create or update
-them lazily, only when there is settled information to record.
+Follow the project's documentation hierarchy. Keep `jumpstart.md` as routing only.
 
-## Workflow
+1. Read only the domain records, decisions, and code relevant to the terms at issue.
+2. Challenge conflicting, vague, or overloaded language with concrete scenarios.
+3. Compare the proposed meaning and relationships with implementation and edge cases.
+4. Record settled domain meaning in its owning project document.
 
-1. Read relevant vocabulary in `jumpstart.md`, decision records, and code.
-2. Challenge conflicts immediately. Ask whether the established term or the
-   new meaning is authoritative.
-3. Replace vague or overloaded language with a precise canonical term.
-4. Stress-test relationships with concrete scenarios, especially edge cases
-   that expose unclear concept boundaries.
-5. Compare claims with implementation. Surface contradictions for the user to
-   resolve rather than silently choosing one source.
-6. Record a resolved term in `jumpstart.md` as soon as it crystallizes. Keep
-   glossary entries about domain meaning, not implementation or plans.
+Create a decision record only for a durable, surprising, or hard-to-reverse trade-off.
+Preserve its context, decision, and material consequences without turning it into a
+session history.
 
-Create a record in `docs/decisions/` only when the decision is hard to reverse,
-surprising without context, and the result of a genuine trade-off. Record the
-context, considered options, decision, consequences, and status. Skip routine
-or easily reversible choices.
-
-## Authority
-
-Project and user policy overrides this skill. Invocation does not authorize
-dependency installation, Git or remote operations, scope expansion,
-destructive actions, or unrelated writes.
-
-Use direct tools before considering an agent. If delegation is necessary, use
-one focused agent for one bounded question; never use broad fan-out.
+Project and user policy overrides this skill. Invocation does not authorize external,
+destructive, publishing, dependency, or unrelated work.

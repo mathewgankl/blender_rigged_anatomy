@@ -5,9 +5,11 @@
 **Researched:** 2026-09-13
 
 This report was produced by a bounded research subagent. On 2026-09-13, the user
-accepted it as Round 1 planning-interview evidence without a model-routing rerun or
-additional primary-agent verification. Future research still follows the configured
-model and effort requirements.
+accepted it as Round 1 planning-interview evidence without a model-routing rerun.
+On 2026-09-14, the primary agent directly refreshed the pinned VRM humanoid roles and
+Autodesk FBX SDK 2020 `FbxCharacter::ENodeId` values for the Milestone 2 mapping
+manifests. Future research still follows the configured model and effort
+requirements.
 
 ## Findings
 
@@ -126,7 +128,7 @@ dependency-free export mappings.
 
 - [Blender 5.0 Rigify basic usage](https://docs.blender.org/manual/en/5.0/addons/rigging/rigify/basics.html) and [bone positioning](https://docs.blender.org/manual/en/5.0/addons/rigging/rigify/bone_positioning.html). The available manual evidence is 5.0; the target API is [Blender 5.2](https://docs.blender.org/api/5.2/).
 - [Rigify naming source at `f39ed89170ba2f7948417021ac8f3f2eba56e730`](https://github.com/blender/blender-addons/blob/f39ed89170ba2f7948417021ac8f3f2eba56e730/rigify/utils/naming.py). This archived mirror predates Blender 5.2; the current extension source returned `403` during inspection.
-- [Autodesk FBX SDK `FbxCharacter`](https://help.autodesk.com/cloudhelp/2020/ENU/FBX-Developer-Help/files/cpp_ref/FBX_Developer_Help_cpp_ref_class_fbx_character_html.html) and [MotionBuilder SDK `FBCharacter`](https://help.autodesk.com/cloudhelp/2022/ENU/MotionBuilder-SDK/cpp_ref/class_f_b_character.html).
+- [Autodesk FBX SDK 2020 `FbxCharacter`](https://help.autodesk.com/cloudhelp/2020/ENU/FBX-API-Reference/cpp_ref/class_fbx_character.html) and [MotionBuilder SDK `FBCharacter`](https://help.autodesk.com/cloudhelp/2022/ENU/MotionBuilder-SDK/cpp_ref/class_f_b_character.html).
 - [VRM 1.0 humanoid](https://github.com/vrm-c/vrm-specification/blob/821c11b250d8c70d5804ee13431e42bee56ea9c0/specification/VRMC_vrm-1.0/humanoid.md) and [T-pose](https://github.com/vrm-c/vrm-specification/blob/821c11b250d8c70d5804ee13431e42bee56ea9c0/specification/VRMC_vrm-1.0/tpose.md), revision `821c11b250d8c70d5804ee13431e42bee56ea9c0`.
 - [Menagerie `ms_human_700` README](https://github.com/google-deepmind/mujoco_menagerie/blob/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700/README.md), [main MJCF](https://github.com/google-deepmind/mujoco_menagerie/blob/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700/MS-Human-700.xml), and [model license](https://github.com/google-deepmind/mujoco_menagerie/blob/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700/LICENSE).
 - [Menagerie arm tendon example](https://github.com/google-deepmind/mujoco_menagerie/blob/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700/assets/tendon/Tendon_Arm_r.xml), [leg tendon example](https://github.com/google-deepmind/mujoco_menagerie/blob/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700/assets/tendon/Tendon_Leg_r.xml), and [arm muscle example](https://github.com/google-deepmind/mujoco_menagerie/blob/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700/assets/muscle/Muscle_Arm_r.xml).

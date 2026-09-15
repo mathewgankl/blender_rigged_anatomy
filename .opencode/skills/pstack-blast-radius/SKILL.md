@@ -28,16 +28,15 @@ the real behavior.
 3. Search direct callers, then follow contracts that symbol search misses: public
    types, configuration, database fields, wire formats, feature flags, lifecycle
    hooks, generated output, and consumers in other modules or languages.
-4. Find the one or two facts on which safety depends. For each fact, prefer direct
+4. Find the facts on which safety depends. Prefer direct
    source evidence, a failure-path trace, an existing focused test, or execution of
    the real path. Mark assumptions that cannot be executed as unproven.
-5. Use direct tools first. Only for a genuinely broad change, use at most two or
-   three bounded read-only agents with non-overlapping areas, and verify findings.
+5. Use bounded read-only agents only when independent investigation adds value, and
+   verify their findings.
 6. Rank confirmed risks by likelihood and impact. Separate risks from cases checked
    and cleared. Do not pad the result with generic possibilities.
 
 ## Output
 
-Report What changed, Safety assumptions and evidence, Findings, Cleared cases, and
-Cheapest pre-merge check. Put actionable findings first, cite files and lines, and
-distinguish observed evidence from inference.
+Put actionable findings first, cite concrete evidence, distinguish observation from
+inference, and identify the cheapest useful check for unresolved risk.

@@ -23,7 +23,9 @@ the resulting requirements and remains the execution gate.
   round. They subsequently confirmed that the recorded decisions matched their
   intent and that grilling was complete.
 - The user separately authorized PRD drafting. During restart preparation on
-  2026-09-14, they then explicitly approved the PRD and authorized Milestone 1 only.
+  2026-09-14, they then explicitly approved the PRD and authorized Milestone 1. On
+  the same date, they approved the refreshed Milestone 1 evidence and authorized
+  Milestone 2.
 
 ## Interpretation Boundary
 

@@ -37,8 +37,8 @@ Prioritize reader load, domain precision, minimal edits, and verifiable claims.
 8. Compare the revision with the source and restore any lost constraint, caveat,
    relationship, or implication.
 
-Use direct editing and inspection tools first. An agent is rarely justified; for a
-large document set, use at most one bounded read-only consistency pass.
+Use a bounded read-only consistency review only when it materially improves a large
+document set.
 
 ## Output
 

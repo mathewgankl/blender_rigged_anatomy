@@ -3,6 +3,7 @@
 import json
 import sys
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 import bmesh
@@ -16,6 +17,7 @@ sys.dont_write_bytecode = True
 import rigged_anatomy
 from rigged_anatomy.application import GenerateRequest, GenerateSettings, run_generate
 from rigged_anatomy.blender_adapter import BlenderMaterializer
+from rigged_anatomy.role_registry import RoleRegistry, load_role_registry
 
 
 def valid_request():
@@ -80,6 +82,31 @@ class VerticalSliceTests(unittest.TestCase):
             [driver["role"] for driver in payload["plan"]["anatomy_drivers"]],
             ["humerus.L", "radius.L", "ulna.L"],
         )
+
+    def test_plan_names_and_metadata_come_from_role_registry(self):
+        registry = load_role_registry()
+        substituted = RoleRegistry(
+            schema_version=registry.schema_version,
+            roles=tuple(
+                replace(
+                    role,
+                    generated_name=f"TEST-{role.id}",
+                    deform=False,
+                )
+                for role in registry.roles
+            ),
+        )
+
+        result = run_generate(valid_request(), role_registry=substituted)
+
+        self.assertTrue(result.ok, result.to_json())
+        self.assertEqual(
+            [bone.name for bone in result.plan.bones],
+            ["TEST-upper_arm.L", "TEST-forearm.L"],
+        )
+        self.assertEqual([bone.deform for bone in result.plan.bones], [False, False])
+        self.assertEqual(result.plan.bones[0].parent, None)
+        self.assertEqual(result.plan.bones[1].parent, "upper_arm.L")
 
     def test_generation_requires_no_source_pose_category(self):
         request = valid_request()

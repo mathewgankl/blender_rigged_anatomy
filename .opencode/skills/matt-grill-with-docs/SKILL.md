@@ -10,28 +10,10 @@ metadata:
 
 # Grill With Docs
 
-Combine `matt-grilling` with `matt-domain-modeling`. Load both skills before
-starting, then follow their workflows together rather than inventing a third
-interview process.
+Load `matt-grilling` and `matt-domain-modeling`, then follow both workflows. Use only
+the project records relevant to the interview, wait for the user's answers, and record
+settled outcomes under project documentation policy. Do not implement the resulting
+plan without separate authorization.
 
-## Workflow
-
-1. Read `jumpstart.md` and relevant files under `docs/decisions/` if present.
-2. Use the design-tree rounds from `matt-grilling` to expose every unsettled
-   decision and wait for the user's answers between rounds.
-3. Apply `matt-domain-modeling` during each round: challenge ambiguous terms,
-   test concrete edge cases, and compare claims with the code.
-4. Update `jumpstart.md` when domain vocabulary becomes settled.
-5. Offer a decision record under `docs/decisions/` only for a durable,
-   surprising, hard-to-reverse trade-off.
-6. Finish only when the interview frontier is empty and the user confirms the
-   shared understanding. Do not implement the resulting plan automatically.
-
-## Authority
-
-Project and user policy overrides this skill. Invocation does not authorize
-dependency installation, Git or remote operations, scope expansion,
-destructive actions, or unrelated writes.
-
-Use direct tools before considering an agent. If delegation is necessary, use
-one focused agent for one bounded question; never use broad fan-out.
+Project and user policy overrides this skill. Invocation does not authorize external,
+destructive, publishing, dependency, or unrelated work.

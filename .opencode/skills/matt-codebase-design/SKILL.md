@@ -44,6 +44,3 @@ are significant; do this directly and sequentially, not through agent fan-out.
 Project and user policy overrides this skill. Invocation does not authorize
 dependency installation, Git or remote operations, scope expansion,
 destructive actions, or unrelated writes.
-
-Use direct tools before considering an agent. If delegation is necessary, use
-one focused agent for one bounded question; never use broad fan-out.

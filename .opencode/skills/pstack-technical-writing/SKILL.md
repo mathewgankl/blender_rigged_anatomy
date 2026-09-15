@@ -38,8 +38,8 @@ Prioritize reader load, domain language, boundaries, and verifiable claims.
 7. Read the result as a tired engineer. Check that each claim is sourced, each link
    says where it leads, terminology is stable, and sentence rhythm remains natural.
 
-Use direct tools first. Use at most one bounded read-only agent only when a large
-document set needs an independently scoped consistency pass.
+Use a bounded read-only consistency review only when it materially improves a large
+document set.
 
 ## Output
 

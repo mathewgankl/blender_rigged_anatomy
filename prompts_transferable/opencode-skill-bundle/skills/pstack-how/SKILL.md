@@ -25,9 +25,8 @@ minimizing reader load.
    different interpretations would materially change the answer.
 2. Use direct read, search, symbol, and history-free inspection tools first. Start
    at entry points, then trace calls, state transitions, data shapes, and effects.
-3. For a narrow question, inspect and explain in one pass. For a subsystem that
-   genuinely spans independent areas, use at most two or three bounded read-only
-   agents with distinct questions, then verify their claims against source files.
+3. Use bounded read-only agents only when independent exploration adds value, and
+   verify their claims against source files.
 4. Identify ownership and boundaries: where input enters, where it is validated,
    where domain decisions live, and where output or side effects occur.
 5. Cite concrete files and lines. Separate observed behavior from inference, and
@@ -37,6 +36,5 @@ minimizing reader load.
 
 ## Output
 
-Use applicable sections: Overview, Key concepts, Runtime flow, Where it lives, and
-Gotchas. Keep the explanation architectural rather than annotating every line.
-This workflow is explanatory and does not modify code unless separately requested.
+Explain the relevant mental model with concrete references and unresolved limits.
+This workflow does not modify code unless separately requested.

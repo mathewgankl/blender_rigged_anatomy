@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "mesh:humerus",
+      "source_key": "mesh:humerus",
+      "anatomy_role": "humerus.R",
+      "driver_role": "upper_arm.R",
+      "template_family": "humerus",
+      "topology_tier": "base",
+      "artifact": {
+        "asset_id": "mesh:humerus",
+        "topology_tier": "base"
+      },
+      "generation_default": true,
+      "surface_regions": [
+        {
+          "id": "whole_surface",
+          "vertex_ids": "all",
+          "triangle_ids": "all"
+        }
+      ],
+      "provenance": {
+        "repository": "https://github.com/google-deepmind/mujoco_menagerie.git",
+        "revision": "8161bba264d7fa7c99ca301e91e7fb44737676ad",
+        "source_path": "assets/geometry/humerus.stl",
+        "sha256": "ae77708e6e2115abea33a546ad7928c33d182799710ebe307ebc05ea7bfeb37b",
+        "license": "Apache-2.0"
+      }
+    }
+  ]
+}

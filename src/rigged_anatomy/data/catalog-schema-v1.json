@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "impact_bands": [
+    "primary_visible",
+    "secondary_visible",
+    "deep_stabilizing"
+  ],
+  "provenance_fields": [
+    "repository",
+    "revision",
+    "source_path",
+    "sha256",
+    "license"
+  ],
+  "anatomy": {
+    "surface_region_all_sentinel": "all",
+    "required_entry_fields": [
+      "id",
+      "source_key",
+      "anatomy_role",
+      "driver_role",
+      "template_family",
+      "topology_tier",
+      "artifact",
+      "generation_default",
+      "surface_regions",
+      "provenance"
+    ],
+    "required_surface_region_fields": [
+      "id",
+      "vertex_ids",
+      "triangle_ids"
+    ],
+    "required_artifact_fields": [
+      "asset_id",
+      "topology_tier"
+    ]
+  },
+  "relationship": {
+    "required_entry_fields": [
+      "id",
+      "source_key",
+      "muscle_source_keys",
+      "driver_roles",
+      "impact_band",
+      "path_points",
+      "provenance"
+    ],
+    "required_path_point_fields": [
+      "id",
+      "source_element",
+      "surface_ref"
+    ],
+    "required_surface_ref_fields": [
+      "anatomy_id",
+      "anatomy_role",
+      "region_id",
+      "triangle_id",
+      "vertex_ids",
+      "barycentric",
+      "bone_local_fallback"
+    ]
+  }
+}

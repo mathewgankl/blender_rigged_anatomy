@@ -8,6 +8,8 @@ import json
 import math
 from typing import Mapping, Protocol, Sequence
 
+from .role_registry import RoleRegistry, load_role_registry
+
 
 Vector3 = tuple[float, float, float]
 REQUIRED_LANDMARKS = ("shoulder.L", "palm.L")
@@ -151,7 +153,7 @@ def _normalized(value: Sequence[float], height: float) -> Vector3:
     )
 
 
-def _build_plan(request: GenerateRequest) -> RigPlan:
+def _build_plan(request: GenerateRequest, role_registry: RoleRegistry) -> RigPlan:
     shoulder = _normalized(request.landmarks["shoulder.L"], request.target_height)
     palm = _normalized(request.landmarks["palm.L"], request.target_height)
     elbow = (
@@ -159,12 +161,27 @@ def _build_plan(request: GenerateRequest) -> RigPlan:
         round((shoulder[1] + palm[1]) / 2 - 0.05, NORMALIZED_PRECISION),
         round((shoulder[2] + palm[2]) / 2, NORMALIZED_PRECISION),
     )
+    bone_geometry = (
+        ("upper_arm.L", shoulder, elbow),
+        ("forearm.L", elbow, palm),
+    )
+    included_roles = {role_id for role_id, _, _ in bone_geometry}
+    bones = []
+    for role_id, head, tail in bone_geometry:
+        role = role_registry.require(role_id)
+        bones.append(
+            BonePlan(
+                role=role.id,
+                name=role.generated_name,
+                parent=role.parent if role.parent in included_roles else None,
+                head=head,
+                tail=tail,
+                deform=role.deform,
+            )
+        )
     return RigPlan(
         schema_version=1,
-        bones=(
-            BonePlan("upper_arm.L", "DEF-upper_arm.L", None, shoulder, elbow),
-            BonePlan("forearm.L", "DEF-forearm.L", "upper_arm.L", elbow, palm),
-        ),
+        bones=tuple(bones),
         anatomy_drivers=(
             AnatomyDriverPlan("humerus.L", "upper_arm.L"),
             AnatomyDriverPlan("radius.L", "forearm.L"),
@@ -174,13 +191,15 @@ def _build_plan(request: GenerateRequest) -> RigPlan:
 
 
 def run_generate(
-    request: GenerateRequest, materializer: Materializer | None = None
+    request: GenerateRequest,
+    materializer: Materializer | None = None,
+    role_registry: RoleRegistry | None = None,
 ) -> GenerateResult:
     errors = _validate(request)
     if errors:
         return GenerateResult(plan=None, errors=errors)
 
-    plan = _build_plan(request)
+    plan = _build_plan(request, role_registry or load_role_registry())
     if materializer is not None:
         try:
             materializer.materialize(plan, request.target_height)

@@ -10,37 +10,14 @@ metadata:
 
 # Grilling
 
-Interview until both sides share a precise understanding. Model the topic as a
-design tree: each decision branches into decisions that depend on it.
+Interview until both sides share a precise understanding. Resolve foundational
+questions before dependent ones, investigate facts available from tools, challenge
+silent assumptions and edge cases, and wait for the user's answers before continuing.
+Offer recommendations and material trade-offs where useful without forcing a fixed
+question format.
 
-## Rounds
+Finish when no material decision remains hidden and the user confirms the shared
+understanding. Do not act on the result without a separate request.
 
-1. Identify the frontier: all unsettled decisions whose prerequisites are
-   already settled.
-2. Investigate available facts directly with repository and environment tools.
-   Do not ask the user for facts that can be looked up.
-3. Ask the entire frontier in one numbered round. For each question, provide a
-   concise recommended answer and its trade-off.
-4. Wait for the user's answers. Do not ask a question whose answer depends on
-   another open question in the same round.
-5. Recompute the tree from those answers and repeat.
-
-Use this shape:
-
-```text
-Q1 - <title>: <question and choices>
-Recommendation: <answer and reason>
-```
-
-The interview is complete only when the frontier is empty, no assumption is
-silent, and the user confirms shared understanding. Do not act on the result
-without a separate request.
-
-## Authority
-
-Project and user policy overrides this skill. Invocation does not authorize
-dependency installation, Git or remote operations, scope expansion,
-destructive actions, or unrelated writes.
-
-Use direct tools first. If one fact cannot be obtained directly, use at most
-one focused agent for that bounded lookup; never use broad fan-out.
+Project and user policy overrides this skill. Invocation does not authorize external,
+destructive, publishing, dependency, or unrelated work.

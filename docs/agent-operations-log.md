@@ -1,13 +1,14 @@
 # Agent Operations Log
 
 **Status:** REFERENCE - NON-AUTHORITATIVE
-**Purpose:** Preserve concise administrative and debugging incidents outside project state
-**Updated:** 2026-09-14
+**Purpose:** Optional reference for administrative and debugging incidents with reusable diagnostic value
+**Updated:** 2026-09-15
 
-Do not read this file during normal project continuation. Consult a named entry only
-when diagnosing a related setup, routing, quota, or invocation problem. Project
-requirements, decisions, research findings, and verification evidence belong in
-their dedicated records.
+Do not read this file during normal project continuation or use it to recover project
+status. Consult a named entry only when diagnosing a related setup, routing, quota,
+or invocation problem. Project requirements, decisions, research findings, and
+verification evidence belong in their dedicated records. Do not add routine session
+activity, command history, or checkpoint summaries.
 
 ## 2026-09-13: Invalid Research CLI Invocation
 

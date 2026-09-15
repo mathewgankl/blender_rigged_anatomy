@@ -21,8 +21,8 @@ relevant records under `docs/decisions/` before reasoning about the area.
 2. Run it and minimize the reproducer one element at a time until every
    remaining element is load-bearing. If no loop is possible, report attempts
    and request access, a redacted artifact, or permission for instrumentation.
-3. Produce three to five ranked, falsifiable hypotheses. State each prediction
-   and show the list before testing, then continue unless asked to pause.
+3. Produce ranked, falsifiable hypotheses warranted by the evidence and state the
+   observations that would support or reject them.
 4. Test one variable at a time. Prefer debugger or REPL inspection, then
    targeted uniquely tagged logs. For performance, establish a measured
    baseline and use profiling or query plans.
@@ -40,6 +40,3 @@ script. Ask before adding instrumentation or making any Git state change.
 Project and user policy overrides this skill. Invocation does not authorize
 dependency installation, Git or remote operations, scope expansion,
 destructive actions, or unrelated writes.
-
-Use direct tools before considering an agent. If delegation is necessary, use
-one focused agent for one bounded question; never use broad fan-out.

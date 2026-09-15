@@ -1,0 +1,17 @@
+MS-Human-700-derived anatomy assets
+
+The files under data/anatomy are derived from MS-Human-700 assets distributed by
+MuJoCo Menagerie at commit 8161bba264d7fa7c99ca301e91e7fb44737676ad.
+
+Source: https://github.com/google-deepmind/mujoco_menagerie/tree/8161bba264d7fa7c99ca301e91e7fb44737676ad/ms_human_700
+License: Apache License 2.0 (see Apache-2.0.txt in this directory)
+
+Modification: humerus-source-v1.json converts assets/geometry/humerus.stl from
+binary STL to a versioned indexed-triangle JSON representation. Exact duplicate
+vertex coordinates are merged, source triangle order is preserved, and derived
+topology diagnostics are added.
+
+Modification: humerus-base-v1.json derives a generation-ready topology tier from
+that source using Blender 5.2.1 LTS Voxel Remesh at a 0.002 meter voxel size,
+zero adaptivity, collapse decimation to 600 triangles, and canonical ID ordering.
+The resulting topology and vertex positions differ from the source.

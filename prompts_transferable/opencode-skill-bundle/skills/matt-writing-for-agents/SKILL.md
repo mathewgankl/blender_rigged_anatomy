@@ -45,6 +45,3 @@ Do not add Claude- or Cursor-specific invocation fields.
 Project and user policy overrides this skill. Invocation does not authorize
 dependency installation, Git or remote operations, scope expansion,
 destructive actions, or unrelated writes.
-
-Use direct tools before considering an agent. If delegation is necessary, use
-one focused agent for one bounded question; never use broad fan-out.

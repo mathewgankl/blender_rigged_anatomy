@@ -28,16 +28,14 @@ Prioritize boundary discipline, reader load, root causes, and proof.
 2. Inspect the code directly first. Review correctness, security, data integrity,
    concurrency, lifecycle, error handling, compatibility, maintainability, and
    missing behavior-level tests where relevant.
-3. For a small review, use no agents. For a broad changeset where independent review
-   adds clear value, use at most three bounded read-only agents with the same intent,
-   scope, and rubric. Do not depend on specific models or external reviewer skills.
+3. Use bounded read-only agents only when independent review adds clear value. Keep
+   their scope and rubric aligned; do not depend on a specific model.
 4. Verify every candidate finding against source and context. Deduplicate overlaps,
    note agreement only as supporting signal, and reject claims that lack evidence.
-5. Classify findings as Act on, Consider, Noted, or Dismissed. Severity follows real
-   impact and likelihood, not reviewer count.
+5. Rank findings by real impact and likelihood, not reviewer count.
 
 ## Output
 
-Lead with actionable findings ordered by severity, each with file and line, failure
-mode, impact, and evidence. Then give Consider, Noted, Dismissed, open questions,
-and testing gaps. If there are no findings, say so and state residual risks.
+Lead with actionable findings ordered by severity and supported by concrete evidence.
+Include relevant open questions and testing gaps. If there are no findings, say so
+and state residual risks.
